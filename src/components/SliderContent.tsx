@@ -16,7 +16,6 @@ export default function SliderContent({ menu }: { menu: Menu[] }) {
 
 function CollapseDiv({ item, index }: { item: Menu; index: number }) {
   const [maxHeight, setMaxHeight] = useState<number | undefined>(0);
-  console.log(index, maxHeight);
   return (
     <>
       <div
@@ -37,7 +36,7 @@ function CollapseDiv({ item, index }: { item: Menu; index: number }) {
           style={{ maxHeight: `${maxHeight}px` }}
         >
           {item.menuItems.map((item, index) => (
-            <li className="ml-4" key={index}>
+            <li className="ml-4 py-3" key={index}>
               {item.menubarItem}
             </li>
           ))}

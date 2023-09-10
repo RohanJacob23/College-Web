@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { MagnifyingGlassIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import {
+  MagnifyingGlassIcon,
+  HamburgerMenuIcon,
+  ExternalLinkIcon,
+} from "@radix-ui/react-icons";
 import Image from "next/image";
 import {
   Menubar,
@@ -13,9 +17,17 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import SliderContent from "@/components/SliderContent";
 import { Menu } from "@/types/types";
+import Carousel from "@/components/Carousel";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Home() {
   const menu: Menu[] = [
@@ -116,7 +128,7 @@ export default function Home() {
               <HamburgerMenuIcon className="h-6 w-6" />
             </SheetTrigger>
             <SheetContent>
-              <ScrollArea className="h-full">
+              <div className="hideScrollbar h-full overflow-y-scroll">
                 <div className="flex flex-col space-y-6 mt-8">
                   <Image
                     src="/logo/xavier-logo.png"
@@ -128,7 +140,7 @@ export default function Home() {
 
                   <SliderContent menu={menu} />
                 </div>
-              </ScrollArea>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
@@ -185,6 +197,74 @@ export default function Home() {
             </MenubarMenu>
           ))}
         </Menubar>
+      </section>
+
+      {/* carousel section */}
+      <section>
+        <Carousel />
+      </section>
+
+      <section>
+        {/* marquee */}
+        <div className="bg-[#b31b38] text-white font-semibold text-lg py-2 w-full whitespace-nowrap overflow-hidden">
+          <div className="py-3 border border-white">
+            <span className="marquee">
+              Admissions for the session 2023-24 has started from 7th April,
+              2023 ✱ On the Spot Admissions has started from 19th June, 2023 ✱
+              Admission Counselling Timings: 9:30 AM to 3:00 PM ✱ Admissions for
+              the session 2023-24 has started from 7th April, 2023 ✱ On the Spot
+              Admissions has started from 19th June, 2023 ✱ Admission
+              Counselling Timings: 9:30 AM to 3:00 PM
+            </span>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center justify-evenly px-4 py-6 md:px-20 md:py-16 gap-4 md:gap-8">
+          <div className="flex flex-col space-y-4 p-4 md:w-2/3">
+            <h1 className="text-[#b31b38] font-bold text-4xl">
+              Principal&apos;s Message
+            </h1>
+            <div className="font-medium text-base space-y-4">
+              <p>
+                Education is the passport to the future, for tomorrow belongs to
+                those who prepare for it today.
+              </p>
+              <p>
+                The world today has no dearth of knowledge, data and statistics
+                - everything lights up on the screen in a desired format at the
+                click of the mouse, yet, ignorance has its tentacles everywhere
+                in various. Education is the only tool to combat ignorance and
+                provide the required confidence march into a future that is full
+                of uncertainty and unknown challenges.
+              </p>
+              <p>
+                St. Xavier&apos;s College Jaipur, believes in empowering young
+                minds so that they can be change makers in the society, and in
+                turn become instruments of dispelling the darkness of ignorance.
+                The college believes in shaping holistic character to enhance
+                competence which would be meaningless without compassion in a
+                world that is stricken with violence, war, hatred and distrust.
+              </p>
+            </div>
+            <Button className="self-center md:self-start">
+              Read More <ExternalLinkIcon className="h-4 w-4 ml-2" />
+            </Button>
+          </div>
+
+          {/* father image card */}
+          <Card>
+            <Image
+              src="/Father-Xavier-Photo.png"
+              width={500}
+              height={500}
+              alt="father's photo"
+              className="h-full w-full object-cover"
+            />
+            <CardFooter className="pt-6 font-semibold text-base">
+              <p>Prof. Fr. S. Xavier SJ</p>
+            </CardFooter>
+          </Card>
+        </div>
       </section>
     </main>
   );
